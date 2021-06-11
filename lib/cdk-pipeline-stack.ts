@@ -11,10 +11,11 @@ export class CdkPipelineStack extends Stack {
     const sourceArtifact = new codepipeline.Artifact();
     const cloudAssemblyArtifact = new codepipeline.Artifact();
 
+    console.log('flag', SecretValue.secretsManager('github/pat'))
+
     const pipeline = new CdkPipeline(this, 'Pipeline', {
       pipelineName: 'MyAppPipeline',
       cloudAssemblyArtifact,
-
       sourceAction: new codepipeline_actions.GitHubSourceAction({
         actionName: 'GitHub',
         output: sourceArtifact,
